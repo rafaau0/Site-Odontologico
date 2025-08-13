@@ -72,8 +72,26 @@
     /* Carousel */
     .carousel{position:relative;background:linear-gradient(180deg,#DED2C0,#fff);padding:70px 0}
     .carousel__track{display:flex;gap:24px;scroll-behavior:smooth;overflow-x:auto;padding-bottom:10px}
-    .card{min-width:900px;max-width:500px;background:#fff;border:1px solid var(--brand);border-radius:var(--radius);box-shadow:0 10px 30px rgba(106,89,71,.08);padding:18px}
-    .card img{border-radius:12px}
+    .card {
+      min-width: 260px;
+      max-width: 350px;
+      width: 90vw;
+      background: #fff;
+      border: 1px solid var(--brand);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(106,89,71,.08);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      max-height: 340px;
+    }
     .control{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:1px solid var(--brand);color:var(--brand-strong);border-radius:999px;padding:10px;cursor:pointer;box-shadow:0 6px 20px rgba(2,6,23,.12)}
     .control:hover{background:var(--brand);color:#fff}
     .control--prev{left:16px}
@@ -88,9 +106,46 @@
 
     /* Footer */
     footer{background:var(--brand-strong);color:var(--card)}
-    .footer{display:grid;gap:28px;grid-template-columns:2fr repeat(3,1fr);padding:50px 0}
+    .footer {
+      display: grid;
+      gap: 28px;
+      grid-template-columns: 2fr repeat(3,1fr);
+      padding: 50px 0;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      justify-items: center;
+      text-align: left;
+    }
     .footer a{color:var(--brand)}
     .copyright{padding:16px 0;border-top:1px solid rgba(255,255,255,.1);text-align:center;color:var(--muted)}
+    @media (max-width: 960px){
+      .footer {
+        grid-template-columns: 1fr 1fr;
+        padding: 36px 0;
+        gap: 24px;
+        text-align: center;
+      }
+    }
+    @media (max-width: 600px){
+      .footer {
+        grid-template-columns: 1fr;
+        padding: 24px 0;
+        gap: 18px;
+        text-align: center;
+      }
+      .footer > div {
+        width: 100%;
+        min-width: 0;
+      }
+      .footer ul {
+        padding-left: 0;
+      }
+      .footer strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+    }
 
     /* Badges */
     .badge{display:inline-flex;align-items:center;gap:8px;background:var(--ink-soft);color:var(--surface);border:1px solid rgba(162,127,97,0.15);padding:8px 12px;border-radius:999px;font-size:13px}
@@ -229,7 +284,7 @@
           <p class="muted" style="margin:6px 0 0">Agende sua avaliação gratuita e saia com um plano claro de tratamento.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn btn--primary" href="https://wa.me/5599999999999" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+          <a class="btn btn--primary" href="https://wa.me/5599999999999" target="_blank" rel="noopener">WhatsApp</a>
           <a class="btn btn--ghost" href="tel:+550000000000">Ligar agora</a>
         </div>
       </div>
