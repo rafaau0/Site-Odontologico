@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oral Center </title>
+  <meta name="description" content="Clínica odontológica moderna. Limpeza, clareamento, ortodontia, implantes e urgências. Agende pelo WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-hero-start: #DED2C0;      /* Bege claro para fundo hero */
+      --bg-hero-end: #B5ADA1;        /* Cinza claro para degradê suave */
+      --brand: #A27F61;              /* Marrom claro para botões e destaques */
+      --brand-strong: #6A5947;       /* Marrom escuro para hover e títulos */
+      --ink: #2B2B2B;                /* Preto para textos principais */
+      --ink-soft: #2B2B2B;           /* Preto para textos secundários */
+      --muted: #2B2B2B;              /* Preto para textos suaves */
+      --surface: #fff;               /* Branco para fundo principal */
+      --card: #DED2C0;               /* Bege claro para cartões */
+      --ring: rgba(162, 127, 97, 0.18); /* Marrom claro translúcido */
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#2B2B2B;background:#fff}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    p {
+      color: #ffffff;
+    }
+
+    /* Header/Nav */
+    .nav{position:fixed;z-index:50;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:16px 24px; backdrop-filter:saturate(180%) blur(10px); background:linear-gradient( to bottom, rgba(133,126,115,0.92), rgba(222,210,192,0.35) );}
+    .nav__brand{display:flex;gap:10px;align-items:center;color:#fff;font-weight:800}
+    .nav__brand svg{color:var(--brand);width:28px;height:28px}
+    .nav__cta{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;font-weight:700;border:1px solid transparent;cursor:pointer;transition:.2s ease}
+    .btn--ghost{background:transparent;color:var(--brand-strong);border-color:rgba(162,127,97,.3)}
+    .btn--ghost:hover{border-color:var(--brand)}
+    .btn--primary{background:var(--brand);color:#fff}
+    .btn--primary:hover{background:var(--brand-strong)}
+
+    /* Hero */
+    .hero{position:relative;padding-top:110px;padding-bottom:90px;background:linear-gradient(180deg,var(--bg-hero-start),var(--bg-hero-end));color:var(--ink);overflow:hidden}
+    .stars{position:absolute;inset:0;pointer-events:none;background:radial-gradient(1px 1px at 20% 30%,#fff 60%,transparent 61%), radial-gradient(1px 1px at 80% 20%,#fff 60%,transparent 61%), radial-gradient(1.2px 1.2px at 60% 70%,#fff 60%,transparent 61%), radial-gradient(1.2px 1.2px at 30% 80%,#fff 60%,transparent 61%)}
+    .container{max-width:1820px;margin:0 auto;padding:0 24px}
+    .hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+    .kicker{font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#cfe2ff}
+    .kicker {
+      color: #fff !important;
+    }
+    .display{font-size:42px;line-height:1.08;margin:10px 0 12px;font-weight:800;color:var(--brand-strong)}
+    .lead{font-size:18px;color:var(--ink-soft)}
+    .hero__actions{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+    .shot{position:relative;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.25);box-shadow:0 40px 80px rgba(0,0,0,.35)}
+    .shot img{width:100%;height:auto}
+    .trust{display:flex;gap:26px;align-items:center;margin-top:26px;color:var(--muted);font-size:14px}
+    .trust img{width:44px;opacity:.85;filter:grayscale(1)}
+
+    /* Features */
+    .section{padding:80px 0}
+    .section--alt{background:linear-gradient(180deg,#fff,var(--card))}
+    .h2{font-size:34px;line-height:1.1;margin:0 0 12px;font-weight:800;color:var(--brand-strong)}
+    .grid{display:grid;gap:28px}
+    .grid--2{grid-template-columns:1fr 1fr}
+    .grid--3{grid-template-columns:repeat(3,1fr)}
+    .feature{display:flex;gap:16px;padding:18px;border-radius:var(--radius);background:var(--card);border:1px solid var(--brand)}
+    .feature__icon{flex:0 0 44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--surface);color:var(--brand)}
+    .muted{color:var(--muted)}
+
+    /* Carousel */
+    .carousel{position:relative;background:linear-gradient(180deg,#DED2C0,#fff);padding:70px 0}
+    .carousel__track{display:flex;gap:24px;scroll-behavior:smooth;overflow-x:auto;padding-bottom:10px}
+    .card{min-width:900px;max-width:500px;background:#fff;border:1px solid var(--brand);border-radius:var(--radius);box-shadow:0 10px 30px rgba(106,89,71,.08);padding:18px}
+    .card img{border-radius:12px}
+    .control{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:1px solid var(--brand);color:var(--brand-strong);border-radius:999px;padding:10px;cursor:pointer;box-shadow:0 6px 20px rgba(2,6,23,.12)}
+    .control:hover{background:var(--brand);color:#fff}
+    .control--prev{left:16px}
+    .control--next{right:16px}
+
+    /* Testimonials/Logos */
+    .press{display:grid;gap:24px;grid-template-columns:repeat(3,1fr);margin-top:28px}
+    .press p{background:#fff;border:1px solid var(--brand);border-radius:var(--radius);padding:16px;min-height:120px;color:var(--ink-soft)}
+
+    /* CTA Section */
+    .cta{background:linear-gradient(90deg,#DED2C0,#fff);border:1px solid var(--brand);border-radius:26px;padding:26px;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:0 10px 30px rgba(106,89,71,.06)}
+
+    /* Footer */
+    footer{background:var(--brand-strong);color:var(--card)}
+    .footer{display:grid;gap:28px;grid-template-columns:2fr repeat(3,1fr);padding:50px 0}
+    .footer a{color:var(--brand)}
+    .copyright{padding:16px 0;border-top:1px solid rgba(255,255,255,.1);text-align:center;color:var(--muted)}
+
+    /* Badges */
+    .badge{display:inline-flex;align-items:center;gap:8px;background:var(--ink-soft);color:var(--surface);border:1px solid rgba(162,127,97,0.15);padding:8px 12px;border-radius:999px;font-size:13px}
+    .badge svg{color:var(--surface);}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero__grid{grid-template-columns:1fr}
+      .display{font-size:36px}
+      .grid--2{grid-template-columns:1fr}
+      .grid--3{grid-template-columns:1fr}
+      .footer{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 600px){
+      .nav{padding:12px 16px}
+      .display{font-size:32px}
+      .footer{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Principal">
+    <a class="nav__brand" href="#top" aria-label="Início">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12c3-6 6-6 9 0s6 6 9 0"/><circle cx="12" cy="12" r="3"/></svg>
+      <span>Oral Center - SUA LOGO AQUI</span>
+    </a>
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="#servicos">Serviços</a>
+      <a class="btn btn--primary" href="https://wa.me/5599999999999" target="_blank" rel="noopener">Agendar no WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="stars"></div>
+    <div class="container hero__grid">
+      <div>
+        <span class="kicker">Clínica odontológica</span>
+        <h1 class="display">Deixe de lado a vergonha e invista em um sorriso mais saudável e bonito!</h1>
+        <p class="lead">Unimos cuidado humano, tecnologia de ponta e um olhar estético refinado para transformar o seu sorriso. Aqui, cada detalhe é pensado para trazer saúde, beleza e confiança, fazendo você sorrir com orgulho todos os dias.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#agendar">Começar agora</a>
+          <a class="btn btn--ghost" href="#como-funciona">Como funciona</a>
+        </div>
+      </div>
+      <div>
+        <div class="shot" aria-hidden="true">
+          <!-- placeholder mockup image; troque por fotos da clínica -->
+          <img src="example.png" alt="Consultório moderno" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- O QUE VOCÊ RECEBE / SERVIÇOS -->
+  <section id="como-funciona" class="section section--alt">
+    <div class="container grid grid--2" style="align-items:center">
+      <div>
+        <img src="example.png" alt="Equipe sorridente" style="border-radius:24px;box-shadow:0 20px 60px rgba(2,6,23,.15)"/>
+      </div>
+      <div>
+        <h2 class="h2">O que você recebe?</h2>
+        <p class="muted">Atendimento completo para manter seu sorriso saudável e bonito.</p>
+        <div class="grid" style="margin-top:18px">
+          <div class="feature">
+            <div class="feature__icon" aria-hidden="true">🪥</div>
+            <div>
+              <strong>Limpeza e prevenção</strong>
+              <p class="muted">Check-up digital, profilaxia e aplicação de flúor para evitar problemas.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature__icon" aria-hidden="true">✨</div>
+            <div>
+              <strong>Clareamento</strong>
+              <p class="muted">Opções em consultório ou caseiro, com acompanhamento profissional.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature__icon" aria-hidden="true">🦷</div>
+            <div>
+              <strong>Implantes</strong>
+              <p class="muted">Reposição de dentes com guias cirúrgicos e planejamento 3D.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature__icon" aria-hidden="true">😄</div>
+            <div>
+              <strong>Ortodontia</strong>
+              <p class="muted">Alinhadores estéticos ou aparelho tradicional com prazos claros.</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:18px">
+          <a href="#agendar" class="btn btn--primary">Experimentar uma avaliação gratuita</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL: Casos / Depoimentos -->
+  <section class="carousel" aria-label="Casos de sucesso">
+    <div class="container" style="position:relative">
+      <h2 class="h2" style="text-align:center">Avaliações de nossos clientes !!</h2>
+      <p class="muted" style="text-align:center;margin-top:2px"></p>
+      <button class="control control--prev" aria-label="Anterior" id="prev">◀</button>
+      <button class="control control--next" aria-label="Próximo" id="next">▶</button>
+      <div class="carousel__track" id="track" tabindex="0" aria-roledescription="carousel" aria-label="Depoimentos">
+        <article class="card">
+          <img src="av01.PNG" alt="Paciente sorrindo" />
+
+        </article>
+        <article class="card">
+          <img src="av02.PNG" alt="Paciente homem" />
+
+        </article>
+        <article class="card">
+          <img src="av03.PNG" alt="Família" />
+
+        </article>
+        <article class="card">
+          <img src="av4.PNG" alt="Criança" />
+
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="agendar" class="section section--alt">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h3 class="h2" style="margin:0">Pronto para um sorriso mais calmo?</h3>
+          <p class="muted" style="margin:6px 0 0">Agende sua avaliação gratuita e saia com um plano claro de tratamento.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn--primary" href="https://wa.me/5599999999999" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+          <a class="btn btn--ghost" href="tel:+550000000000">Ligar agora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- Adicione logo acima do rodapé (antes de </footer>) -->
+
+
+  <section id="localizacao" class="section section--alt">
+    <div class="container" style="max-width:1100px">
+      <h2 class="h2" style="text-align:center">Nossa Localização</h2>
+      <p style="text-align:center;margin-bottom:24px">Venha nos visitar! Estamos em um local de fácil acesso.</p>
+      <div style="display:flex;justify-content:center">
+        <iframe
+          src="https://www.google.com/maps?q=Rua+Exemplo,+123,+Centro,+Sua+Cidade,+UF&output=embed"
+          width="100%"
+          height="320"
+          style="border:0;border-radius:18px;box-shadow:0 10px 30px rgba(106,89,71,.10)"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa da clínica">
+        </iframe>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer">
+      <div>
+        <div class="nav__brand" style="color:#cdd6ff">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12c3-6 6-6 9 0s6 6 9 0"/><circle cx="12" cy="12" r="3"/></svg>
+          <strong>Oral Center</strong>
+        </div>
+        <p style="color:#9fb0ff">Rua Exemplo, 123 — Centro — Sua Cidade/UF<br>Seg–Sex 8h às 19h • Sáb 9h às 13h</p>
+      </div>
+      <div>
+        <strong>Serviços</strong>
+        <ul style="padding:0;margin:10px 0;list-style:none;color:#cdd6ff">
+          <li><a href="#servicos">Clareamento</a></li>
+          <li><a href="#servicos">Ortodontia</a></li>
+          <li><a href="#servicos">Implantes</a></li>
+          <li><a href="#servicos">Urgências</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Atendimento</strong>
+        <ul style="padding:0;margin:10px 0;list-style:none;color:#cdd6ff">
+          <li><a href="https://wa.me/5599999999999" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contato@sorrisocalm.com">Email</a></li>
+          <li><a href="#agendar">Agendar</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Legal</strong>
+        <ul style="padding:0;margin:10px 0;list-style:none;color:#cdd6ff">
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2025 SorrisoCalm. Todos os direitos reservados.</div>
+  </footer>
+
+ 
+
+  <script>
+    // Carousel controls
+    const track = document.getElementById('track');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const cardWidth = () => track.querySelector('.card').offsetWidth + 24; // includes gap
+
+    prev.addEventListener('click',()=> track.scrollBy({left: -cardWidth(), behavior:'smooth'}));
+    next.addEventListener('click',()=> track.scrollBy({left: cardWidth(), behavior:'smooth'}));
+
+    // Keyboard support
+    track.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowRight') next.click();
+      if(e.key === 'ArrowLeft') prev.click();
+    });
+
+    // Smooth anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        if(id.length>1){
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      })
+    });
+  </script>
+</body>
+</html>
